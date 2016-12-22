@@ -5,7 +5,13 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new contact_params
-    @contact.save
+
+    # проверка email и message на пустые поля
+    if @contact.valid?
+      @contact.save
+    else
+      render action: 'new'
+    end
   end
 
   private
