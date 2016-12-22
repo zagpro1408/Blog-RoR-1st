@@ -9,6 +9,8 @@ class ArticlesController < ApplicationController
     # проверка на пустые поля
     if @article.valid?
       @article.save
+      # перебросит на страницу #show
+      redirect_to @article
     else
       render action: 'new'
     end
