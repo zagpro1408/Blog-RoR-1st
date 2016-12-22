@@ -1,6 +1,8 @@
 <h1>Contact us</h1>
 
 <%= form_for :contact, url: contacts_path do |f| %>
+
+  <!-- Вывод сообщения об ошибке -->
   <% if @contact && @contact.errors.any? %>
     <p>
       <ul>
