@@ -2,3 +2,32 @@
 <p>
   <%= @article.text %>
 </p>
+
+<h2>Comments</h2>
+
+<% @article.comments.each do |comment| %>
+  <p>
+    <b><%= comment.author %> said:</b>
+    <br>
+    <%= comment.body %>
+  </p>
+<% end %>
+<h2>Add comment</h2>
+
+<p>
+  <%= form_for([@article, @article.comments.build]) do |f| %>
+    <p>
+      <%= f.label :author %><br>
+      <%= f.text_field :author %>
+    </p>
+
+    <p>
+      <%= f.label :body %><br>
+      <%= f.text_area :body %>
+    </p>
+
+    <p>
+      <%= f.submit %><br>
+    </p>
+  <% end %>
+</p>
