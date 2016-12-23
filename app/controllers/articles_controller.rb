@@ -15,12 +15,27 @@ class ArticlesController < ApplicationController
     @article = Article.new article_params
 
     # проверка на пустые поля
-    if @article.valid?
-      @article.save
+    if @article.save
       # перебросит на страницу #show
       redirect_to @article
     else
       render action: 'new'
+    end
+  end
+
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:id])
+
+    # проверка на пустые поля
+    if @article.update(article_params)
+      # перебросит на страницу #show
+      redirect_to @article
+    else
+      render action: 'edit'
     end
   end
 
