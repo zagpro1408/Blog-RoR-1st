@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
-  before_filter :authenticate_user!
+
+  # Не залогиненный пользователь не сможет использовать :new и :create.
+  before_filter :authenticate_user!, :only => [:new, :create]
 
   def index
     @articles = Article.all
